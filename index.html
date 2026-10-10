@@ -13,6 +13,14 @@
         img[data-video]{
             cursor: pointer;
             }
+        .pet-video{
+            display: inline-block;
+            margin: 0 20px 10px 0;
+            vertical-align: top;
+        }
+        .pet-video img{
+            margin: 0;
+        }
         video{
             margin-right:20px;
             width: 200px;
@@ -23,7 +31,7 @@
                 padding: 20px;
                 background-color: dodgerblue;
             }
-            p {
+            p, .pet-content {
                 color: white;
                 text-align: center;
                 font-size:16px;
@@ -38,15 +46,20 @@
         <h1>Hello World this is my first website
         </h1> 
         <h2 >My pets</h2>
-        <p> Here is a photo of Boris, He was a gentle giant. <br>
-             <img src="IMG-boris.jpg" alt="Great Dane, white with black spots, both ears blowing in the wind whilst on a beach"
-                  data-video="Boris.mp4" role="button" tabindex="0" aria-label="Play video of Boris"> <br> <br>
+        <p>Click on the dog images for a video</p>
+        <div class="pet-content"> Here is a photo of Boris, He was a gentle giant. <br>
+             <span class="pet-video">
+                 <img src="IMG-boris.jpg" alt="Black and white great dane on a flat beach, running towards the sea &amp; bringing back a ball"
+                      data-video="Boris.mp4" role="button" tabindex="0" aria-label="Play video of Boris">
+             </span> <br> <br>
         I also had 2 golden labradors and a tabby cat<br>
-    <img src="IMG_5573.PNG" alt="2 golden labradors, one sitting behind the other both looking slightly to the left handside"
-         data-video="labs.mp4" role="button" tabindex="0" aria-label="Play video of the labradors">
+    <span class="pet-video">
+        <img src="IMG_5573.PNG" alt="Two golden labradors playing in a rocky river"
+             data-video="labs.mp4" role="button" tabindex="0" aria-label="Play video of the labradors">
+    </span>
     <img src="IMG-20220620-WA0003.jpeg" alt="brown cat with specks of orange and yellow, looking to the right with a slightly tilted head">
     <br>
-</p>
+</div>
     <script>
         function playPetVideo(image) {
             const video = document.createElement("video");
