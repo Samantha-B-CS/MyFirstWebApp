@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <title>Hello World </title>
+
+    <style> 
+        img{
+            margin-right:20px;
+            width: 200px ;
+            height: auto;
+            }
+        img[data-video]{
+            cursor: pointer;
+            }
+        .pet-video{
+            display: inline-block;
+            margin: 0 20px 10px 0;
+            vertical-align: top;
+        }
+        .pet-video img{
+            margin: 0;
+        }
+        video{
+            margin-right:20px;
+            width: 200px;
+            height: auto;
+            }
+            body {
+                font-family: Arial,  sans-serif;
+                padding: 20px;
+                background-color: dodgerblue;
+            }
+            p, .pet-content {
+                color: white;
+                text-align: center;
+                font-size:16px;
+            }
+
+    h2{ font-size:75px;}
+    </style>
+    </head> 
+
+    <body>
+
+        <h1>Hello World this is my first website
+        </h1> 
+        <h2 >My pets</h2>
+        <p><a href="about.html">Open the Bootstrap pet page</a></p>
+        <p>Click on the dog images for a video</p>
+        <div class="pet-content"> Here is a photo of Boris, He was a gentle giant. <br>
+             <span class="pet-video">
+                 <img src="IMG-boris.jpg" alt="Black and white great dane on a flat beach, running towards the sea &amp; bringing back a ball"
+                      data-video="Boris.mp4" role="button" tabindex="0" aria-label="Play video of Boris">
+             </span> <br> <br>
+        I also had 2 golden labradors and a tabby cat<br>
+    <span class="pet-video">
+        <img src="IMG_5573.PNG" alt="Two golden labradors playing in a rocky river"
+             data-video="labs.mp4" role="button" tabindex="0" aria-label="Play video of the labradors">
+    </span>
+    <img src="IMG-20220620-WA0003.jpeg" alt="brown cat with specks of orange and yellow, looking to the right with a slightly tilted head">
+    <br>
+</div>
+    <script>
+        function playPetVideo(image) {
+            const video = document.createElement("video");
+            video.src = image.dataset.video;
+            video.controls = true;
+            video.autoplay = true;
+            video.playsInline = true;
+            video.setAttribute("aria-label", image.getAttribute("aria-label"));
+            image.replaceWith(video);
+        }
+
+        document.querySelectorAll("img[data-video]").forEach(function (image) {
+            image.addEventListener("click", function () {
+                playPetVideo(image);
+            });
+            image.addEventListener("keydown", function (event) {
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    playPetVideo(image);
+                }
+            });
+        });
+    </script>
+    </body>
+    </html>
